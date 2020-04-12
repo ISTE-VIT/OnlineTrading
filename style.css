@@ -267,6 +267,44 @@ nav{
     color: white;
 }
 
+.single-promo-section{
+    background: #021132;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.single-promo{
+    color: white;
+    margin: 1em 0em;
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('converse.jpg'),rgba(0,0,0,0.4);
+    background-blend-mode: overlay;
+    background-position: center;
+    background-size: cover;
+    transition: 0.3s ease;
+}
+.single-promo:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.single-promo h3{
+    text-transform: uppercase;
+    font-size: 3em;
+}
+
+.single-promo h4{
+    text-transform: uppercase;
+    font-size: 2em;
+    transition: 0.3s ease;
+}
+
 body {
     font-family: Arial;
   }
