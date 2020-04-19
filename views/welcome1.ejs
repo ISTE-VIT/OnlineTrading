@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>OnlineTrading | ISTE VIT</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/style_landingPage.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <nav>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <div class="catogories">
+                <div class="customer-section-hidden">
+                    <ul class="catogories-links">
+                        <li class="account">Login</li>
+                        <li class="account">Sign-up</li>
+                        <li class="search">Search</li>
+                    </ul>
+                    <hr class="section-divider">
+                </div>
+                <ul class="catogories-links">
+                    <li>Mobiles, Computers</li>
+                    <li>TVs, Applicances, Electronics</li>
+                    <li>Men's Fashion</li>
+                    <li>Women's Fashion</li>
+                    <li>Home, Kitchen, Pets</li>
+                    <li>Beauty, Health, Grocery</li>
+                    <li>Sports, Fitness, Bags, Luggage</li>
+                    <li>Toys, Baby Products, Kid's Fashion</li>
+                    <li>Car, Motorbike, Industrial</li>
+                    <li>Books</li>
+                </ul>
+            </div>
+            <h1 class="logo">OnlineTrading</h1>
+            <ul class="customer-section">
+                <li class="account"><a href="./login" role="button">Login</a></li>
+                <li class="account"><a href="./signup" role="button">Sign-up</a></li>
+                <li class="search"><a href="#">Search</a></li>
+            </ul>
+        </nav>   
+        <div class="content">     
+        	<div class="promo">
+            		<img src="bose-logo.png">
+            		<h3>Noise Cancelling</h3>
+            		<h4>Bose QuietComfort 35 II</h4>
+        	</div>
+            <section class="card-section popular">
+                <div class="cards">
+                    <div class="card">
+                        <h3>Premium TVs</h3>
+                    </div>
+                    <div class="card">
+                        <h3>Premium TVs</h3>
+                    </div>
+                    <div class="card">
+                        <h3>Premium TVs</h3>
+                    </div>
+                </div>
+                <h3>Choose from our popular Sections</h3>
+            </section>
+            <section class="offers">
+                <h3>Today's Deals</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Up to 40% Off</h3>
+                    </div>
+                    <div class="card">
+                        <h3>Up to 40% Off</h3>
+                    </div>
+                    <div class="card">
+                        <h3>Up to 40% Off</h3>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script>
+            const catogorySlide = () =>{
+    const burger = document.querySelector('.burger');
+    const section = document.querySelector('.catogories');
+    const content = document.querySelector('.content');
+
+    burger.addEventListener('click', ()=>{
+        section.classList.toggle('catogories-active');
+        burger.classList.toggle('burger-active');
+        content.classList.toggle('hidden');
+    });
+}
+
+catogorySlide();
+        </script>
+    </body>
+</html>
