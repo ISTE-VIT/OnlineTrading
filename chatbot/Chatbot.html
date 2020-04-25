@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <title>ML chatbot</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/style.css">
+    <style>
+    body {
+	/*background: #3E3E3E;
+    /*background: linear-gradient(-45deg, #3E3E3E, #797979);
+    background: rgb(4,7,7);
+background: radial-gradient(circle, rgba(4,7,7,1) 14%, rgba(51,51,51,1) 37%, rgba(0,212,255,1) 88%, rgba(34,34,34,1) 100%);*/
+    
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+}
+section{
+    width:100%;
+    height:100vh;
+    color: #fff;
+    
+    background: linear-gradient(-45deg, #EE7752, #E73C7E,#23A6D5, #23D5AB);
+    background-size: 400% 400%;
+    position: relative;
+    animation: change 10s ease-in-out infinite;
+}
+@keyframes change{
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}</style>
+
+  
+</head>
+
+<body>
+
+<section>
+
+<div class="chat">
+  <div class="chat-title">
+    <h1>CHAT BOt</h1>
+    <h2>CHAT BOT </h2>
+    <figure class="avatar">
+      <img src="css/bot.png"/></figure>
+  </div>
+  <div class="messages">
+    <div class="messages-content"></div>
+    <div class="suggession">
+     
+    </div>
+  </div>
+  <form class="message-box" id="mymsg" method="POST">
+    <input type="text" id="MSG" name="MSG" class="message-input" placeholder="Type message..." >
+   
+    <i class="fas fa-microphone" id="start-record-btn"></i>
+    <button type="submit" class="message-submit">Send</button>
+  </form>
+  <h3 class="no-browser-support" hidden>Sorry, Your Browser Doesn't Support the Web Speech API. Try Opening This Demo In Google Chrome.</h3>
+</div>
+<div class="bg"></div>
+    </section>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script>
+  <script  src="js/index.js"></script>
+  
+    
+</body>
+
+</html>
