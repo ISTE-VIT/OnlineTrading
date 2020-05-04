@@ -6,17 +6,34 @@
 }
 
 body{
-    overflow-x: hidden;
+    overflow-x: hidden;    
+    background-color: #EAEDED
+}
+
+::-webkit-scrollbar {
+    width: 0.25em;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #EAEDED; 
+}
+ 
+::-webkit-scrollbar-thumb {
+    background-color: #000;
 }
 
 .hidden{
-    display: none;
+    display: none !important;
+}
+
+.unhide{
+    display: block !important;
 }
 
 .burger{
     padding: 1em;
     cursor: pointer;
-    z-index: 2;
+    z-index: 5;
 }
 
 .burger div{
@@ -28,17 +45,18 @@ body{
 }
 
 .catogories{
-    position: absolute;
+    border-right: thin solid black;
+    position: fixed;
     top: 0;
     padding-top: 5em;
     left: 0;
-    padding-left: 15%;
-    width: 100%;
+    padding-left: 2em;
+    width: 30%;
     height: 100%;
     transform: translateX(-100%);
     transition: 1s ease;
     background-color: white;
-    z-index: 1;
+    z-index: 4;
 }
 
 .catogories-active{
@@ -57,14 +75,106 @@ body{
     transform: rotate(45deg) translate(-0.055em,-0.7em);
 }
 
+.display{
+    margin-top: 4.5em;
+    position: fixed !important;
+    z-index: 5;
+    width: 70%;
+    height: 93vh;
+    background-color: white;
+    right: 0;
+    padding: 2em;
+    transition: 1s ease-in-out;
+    transform: translateX(-150%);
+}
+
+.display-active{
+    transform: translateX(0%);
+}
+
+.display h1{
+    text-transform: uppercase;
+    font-family: 'Oswald',sans-serif;
+    font-size: 3em;
+    letter-spacing: 0.025em;
+}
+
+.catogory-card-section{
+    height: 80%;
+    margin: 1em 0em;
+    display: grid;
+    grid-template-areas: 
+    "card1 card2 card3"
+    "card4 card5 card5";
+    grid-gap: 1em;
+}
+
+.catogory-card-section .card1{
+    grid-area: card1;
+}
+
+.catogory-card-section .card2{
+    grid-area: card2;
+}
+
+.catogory-card-section .card3{
+    grid-area: card3;
+}
+
+.catogory-card-section .card4{
+    grid-area: card4;
+}
+
+.catogory-card-section .card5{
+    grid-area: card5;
+}
+
+.catogory-card{
+    background: url("card.png"),rgba(0,0,0,0.4);
+    background-blend-mode: overlay;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    padding: 1em;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.catogory-card:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.catogory-card h1{
+    font-family: 'Oswald',sans-serif;
+    font-size: 2.5em;
+    letter-spacing: 0.05em;
+    color: #fff;
+}
+
+.more{
+    text-align: right;
+}
+
+.more a{
+    text-decoration: none;
+    color: black;
+}
+
 .catogories-links{
+    height: 90%;
     list-style: none;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-y: scroll;
 }
 
 .catogories-links li{
     font-family: "Oswald",sans-serif;
-    font-size: 3.15em;
+    font-size: 1.75em;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 0.075em;
@@ -75,7 +185,7 @@ body{
 
 .catogories-links li:hover{
     color: white;
-    font-size: 4em;
+    font-size: 2em;
     text-shadow:
     -1px -1px 0 #000,  
      1px -1px 0 #000,
@@ -83,17 +193,40 @@ body{
      1px  1px 0 #000;
 }
 
+.catogory-gap{
+    width: 100%;
+    transform: translateX(-10%);
+}
+
 nav{
+    width: 100%;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5em;
+    background-color: #fff;
+    z-index: 6;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+    align-self: center;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
 }
 
 .logo{
     position: absolute;
-    transform: translateX(45vw);
-    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    font-weight: 100;
+    letter-spacing: 0.025em;
 }
 
 .customer-section{
@@ -106,7 +239,14 @@ nav{
 .customer-section li{
     padding: 1em;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 100;
+    letter-spacing: 0.2em;
+    user-select:  none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .customer-section-hidden{
@@ -114,15 +254,16 @@ nav{
 }
 
 .section-divider{
-    width: 50vw;
+    width: 90%;
 }
 
 .promo{
-    height: 80vh;
+    height: 90vh;
     background: url('bose.jpg'),rgba(0,0,0,0.5);
     background-blend-mode: overlay;
     background-size: cover;
-    background-position: center;
+    background-position: top center;
+    background-repeat: no-repeat;
     width: auto;
     display: flex;
     flex-direction: column;
@@ -130,23 +271,68 @@ nav{
     padding: 10% 10%;
     text-transform: uppercase;
     color: white;
+    font-family: 'Bebas Neue',sans-serif;
 }
 
 .promo h3{
     font-size: 4em;
+    animation: slide 2s;
 }
 
 .promo img{
     width: 100px;
     height: auto;
+    animation: slide 2s;
 }
 
 .promo h4{
     font-size: 2em;
+    animation: slide 2s;
+}
+
+@keyframes slide{
+    0%{
+        transform: translateX(-1em);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0em);
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width:768px){
+    body{
+        height: 100vh;
+    }
+
+    .burger-active .line1{
+        transform: rotate(-45deg) translate(-0.04em,0.6em);
+    }
+    .burger-active .line3{
+        transform: rotate(45deg) translate(-0.06em,-0.6em);
+    }
+
+    .burger div{
+        width: 1.5em;
+        height: 0.15em;
+        margin: 0.3em;
+    }
+    
+    .display{
+        display: none;
+    }
+
+    .logo{
+        z-index: 0;
+        font-size: 1em;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
     .catogories{
+        width: 100%;
+        height: 100vh;
         padding-left: 10%;
     }
     
@@ -158,24 +344,24 @@ nav{
         display: block;
     }
     
+    .catogories-links{
+        display: block;
+    }
+
     .catogories-links li{
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     .catogories-links li:hover{
-        font-size: 2.25em;
-    }
-
-    .logo{
-        transform: translateX(32.5vw);
+        font-size: 2em;
     }
 
     .promo h3{
-        font-size: 3.5em;
+        font-size: 3em;
     }
 
     .promo h4{
-        font-size: 1.5em;
+        font-size: 1em;
     }
 }
 
@@ -184,9 +370,7 @@ nav{
     height: auto;
 }
 
-
 .cards{
-    position: relative;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -196,44 +380,54 @@ nav{
 .card-section{
     margin: 0;
     padding: 0;
-    background-color: grey;
+    background-color: #EAEDED;
 }
 
 .card-section h3{
     text-align: center;
     text-transform: uppercase;
-    font-size: 2em;
-    color: white;
+    font-size: 3em;
+    letter-spacing: 0.05em;
+    color: black;
     transform: translateY(-3vw);
+    font-family: 'Bebas Neue',cursive;
 }
 
 .card{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 1em 1em;
-    padding: 1em;
+    margin: 2em 3em;
     width: 30em;
-    height: 25em;
-    background: url('card.png');
-    background-color: rgba(0,0,0,0.4);
+    height: 30em;
+    background: url('card.png'), rgba(0,0,0,0.45);
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
     background-blend-mode: overlay;
     transition: 0.3s ease-in;
 }
 
-.card:hover{
-    background-color: rgba(0,0,0,0.5);
+.card:hover,.small-promo:hover{
+    background-color: rgba(0,0,0,0.65);
 }
 
-.card h3{
+.card h3,.small-promo h3{
     color: white;
     text-transform: uppercase;
     font-weight: 800;
     font-family: 'Oswald',sans-serif;
-    font-size: 2em;
+    font-size: 3em;
 }
+
+.card h2,.small-promo h2{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-family: 'Oswald',sans-serif;
+    font-size: 3em;
+}
+
 
 @media screen and (max-width:768px){
     .cards{
@@ -242,39 +436,238 @@ nav{
 
     .card{
         height: 10em;
-        margin: 0.25em 0.5em;
+        margin: 0.25em 1em;
+    }
+
+    .card h2{
+        font-size: 2em;
+    }
+
+    .card h3{
+        font-size: 1.5em;
+    }
+    .card-section h3{
+        font-size: 2em;
+    }
+
+}
+
+.section-gap{
+    width: 95vw;
+    margin: 0 auto 0 auto;
+}
+
+.single-promo-section{
+    background: #EAEDED;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.single-promo{
+    color: white;
+    margin: 1em 0em;
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('converse.jpg'),rgba(0,0,0,0.4);
+    background-blend-mode: overlay;
+    background-position: center;
+    background-size: cover;
+    transition: 0.3s ease;
+}
+.single-promo:hover{
+    background-color: rgba(0,0,0,0.5);
+}
+
+.single-promo h3{
+    text-transform: uppercase;
+    font-size: 3em;
+}
+
+.single-promo h4{
+    text-transform: uppercase;
+    font-size: 2em;
+    transition: 0.3s ease;
+}
+
+.offer-section{
+    padding: 3em 2em;
+}
+
+.headers h1{
+    font-family: 'Bebas Neue',cursive;
+    font-size: 3em;
+    letter-spacing: 0.05em;
+}
+
+.offer-section .headers{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 900px){
+    .offer-section .offer-card-section{
+        display: grid;
+        margin: 1em 0em;
+        grid-template-columns: 1fr;
+        grid-gap: 1em;
+    }
+
+    .headers h1{
+        font-size: 2em;
+    }
+
+    .headers h3{
+        font-size: 1em;
+    }
+
+    .deal-card{
+        margin: 0;
+        padding: 0;
+        height: 10em;
+    }
+
+    .deal-card h2{
+        font-size: 1em;
+    }
+
+    .deal-card h3{
+        font-size: 0.75em;
     }
 }
 
-.offers{
-    background-color: #021132;
-}
-.offers .cards{
-    transform: translateY(0);
+@media screen and (min-width: 900px){  
+    .headers{
+        flex-direction: column;
+    }
+
+    .offer-card-section .card1{
+        grid-area: card1;
+    }
+
+    .offer-card-section .card2{
+        grid-area: card2;
+    }
+
+    .offer-card-section .card3{
+        grid-area: card3;
+    }
+
+    .offer-card-section .card4{
+        grid-area: card4;
+    }
+
+    .offer-card-section .card5{
+        grid-area: card5;
+    }
+
+    .offer-card-section .card6{
+        grid-area: card6;
+    }
+
+    .deal-card{
+        margin: 0;
+        padding: 0;
+        height: 30em;
+    }
+
+    .offer-section .offer-card-section{
+        display: grid;
+        margin: 3em 0em;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1.5em;
+        grid-template-areas: 
+        "card1 card2 card3"
+        "card4 card4 card4"
+        "card5 card5 card6";
+    }
+
+    .offer-section .catogory-page{
+        display: grid;
+        margin: 3em 0em;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1.5em;
+        grid-template-areas: 
+        "card1 card2 card2"
+        "card3 card3 card4"
+        "card5 card5 card5";
+    }
 }
 
-.offers .card{
-    justify-content: flex-start;
-    align-items: flex-end;
-    background-image: url('offer.png');
+.small-promo{
+    background: url('offer.png'),rgba(0,0,0,0.5);
+    background-blend-mode: overlay;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: 0.3s ease;
+    padding: 1em;
 }
 
-.offers h3{
-    padding: 1em;    
+.see-more{
+    font-family: 'Bebas Neue',sans-serif;
+    font-size: 3em;
+    height: inherit;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 0.3s ease;
+    color: #000;
+    border: thin solid black;
+}
+
+.see-more:hover{
+    background-color: black;
+    color: white; 
+}
+
+.content .header{
+    margin: 1em 4em;
+}
+
+@keyframes down-slide{
+    from{
+        transform: translateY(-2em);
+        opacity: 0;
+        letter-spacing: -0.1em;
+    }
+    to{
+        transform: translateY(0em);
+        opacity: 1;
+        letter-spacing: 0.1em;
+    }
+}
+
+.content .header h1{
     text-align: center;
     text-transform: uppercase;
-    font-size: 2em;
-    color: white;
+    font-size: 3.5em;
+    font-family: 'Oswald',sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    animation: down-slide 0.6s;
 }
 
-body {
-    font-family: Arial;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
+
+.category-promo{
+    height: 60vh;
+    padding: 2em 2em;
+}
+
   .openBtn {
     background: #f1f1f1;
     border: none;
