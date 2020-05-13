@@ -23,11 +23,21 @@ body{
 }
 
 .hidden{
-    display: none !important;
+    overflow-y: hidden;
 }
 
 .unhide{
     display: block !important;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 10;
 }
 
 .burger{
@@ -45,7 +55,6 @@ body{
 }
 
 .catogories{
-    border-right: thin solid black;
     position: fixed;
     top: 0;
     padding-top: 5em;
@@ -86,6 +95,7 @@ body{
     padding: 2em;
     transition: 1s ease-in-out;
     transform: translateX(-150%);
+    overflow-y: scroll;
 }
 
 .display-active{
@@ -154,12 +164,19 @@ body{
 }
 
 .more{
-    text-align: right;
+    width: 10em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
 }
 
 .more a{
     text-decoration: none;
-    color: black;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Oswald',sans-serif;
 }
 
 .catogories-links{
@@ -397,9 +414,12 @@ nav a{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2em 3em;
-    width: 30em;
-    height: 30em;
+    flex-grow: 1;
+    min-width: 20%;
+    max-width: 30em;
+    margin: 2em 2em;
+    width: 30rem;
+    height: 30rem;
     background: url('card.png'), rgba(0,0,0,0.45);
     background-size: cover;
     background-repeat: no-repeat;
@@ -437,10 +457,11 @@ nav a{
     .card{
         height: 10em;
         margin: 0.25em 1em;
+        max-width: 75%;
     }
 
     .card h2{
-        font-size: 2em;
+        font-size: 1em;
     }
 
     .card h3{
@@ -512,7 +533,8 @@ nav a{
     flex-direction: row;
 }
 
-@media screen and (max-width: 900px){
+
+@media screen and (max-width: 768px){
     .offer-section .offer-card-section{
         display: grid;
         margin: 1em 0em;
@@ -540,6 +562,71 @@ nav a{
 
     .deal-card h3{
         font-size: 0.75em;
+    }
+}
+
+@media screen and (min-width: 768px){  
+    .headers{
+        flex-direction: column;
+    }
+
+    .offer-card-section .card1{
+        grid-area: card1;
+    }
+
+    .offer-card-section .card2{
+        grid-area: card2;
+    }
+
+    .offer-card-section .card3{
+        grid-area: card3;
+    }
+
+    .offer-card-section .card4{
+        grid-area: card4;
+    }
+
+    .offer-card-section .card5{
+        grid-area: card5;
+    }
+
+    .offer-card-section .card6{
+        grid-area: card6;
+    }
+
+    .deal-card{
+        margin: 0;
+        padding: 0;
+        height: 30em;
+    }
+
+    .offer-section .offer-card-section{
+        display: grid;
+        margin: 3em 0em;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5em;
+        grid-template-areas:
+        "card1 card2"
+        "card3 card6"
+        "card4 card4"
+        "card5 card5";
+    }
+
+    .offer-section .recent{
+        grid-template-areas:  
+        "card1 card2"
+        "card3 card4"
+        "card5 card6";}
+
+    .offer-section .catogory-page{
+        display: grid;
+        margin: 3em 0em;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5em;
+        grid-template-areas: 
+        "card1 card2"
+        "card3 card4"
+        "card5 card6";
     }
 }
 
@@ -583,21 +670,27 @@ nav a{
         margin: 3em 0em;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 1.5em;
-        grid-template-areas: 
+        grid-template-areas:
         "card1 card2 card3"
         "card4 card4 card4"
         "card5 card5 card6";
     }
 
+    .offer-section .recent{
+        grid-template-areas:  
+        "card1 card2 card3"
+        "card4 card5 card6";}
+
     .offer-section .catogory-page{
+        padding: 0em 2em;
         display: grid;
         margin: 3em 0em;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-gap: 1.5em;
         grid-template-areas: 
-        "card1 card2 card2"
-        "card3 card3 card4"
-        "card5 card5 card5";
+        "card1 card2"
+        "card3 card4"
+        "card5 .";
     }
 }
 
@@ -628,6 +721,7 @@ nav a{
     transition: 0.3s ease;
     color: #000;
     border: thin solid black;
+    background-color: white;
 }
 
 .see-more:hover{
@@ -668,6 +762,51 @@ nav a{
     padding: 2em 2em;
 }
 
+.category{
+    position: absolute;
+    z-index: 5;
+    font-size: 1.3em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 100;
+    transform: translateX(3em);
+    border-left: 0.1em solid black;
+    padding-left: 0.25em;
+    height: 1.15em;
+}
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 3em;
+    margin: 3em 0em;
+}
+
+@media screen and (max-width:768px){
+    footer{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.links h1{
+    font-size: 1.5em;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.links ul{
+    list-style-type: none;
+}
+
+.links ul a{
+    text-decoration: none;
+    color: black;
+}
+
   .openBtn {
     background: #f1f1f1;
     border: none;
@@ -681,15 +820,20 @@ nav a{
   }
   
   .overlay {
-    height: 100%;
-    width: 100%;
-    display: none;
+    height: 100vh;
+    width: 100vw;
     position: fixed;
-    z-index: 1;
+    z-index: -1;
     top: 0;
     left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
+    background-color: rgba(0,0,0,0.45);
+    opacity: 0;
+    transition: 0.5s ease-out;
+  }
+
+  .overlay-active{
+      opacity: 1;
+      z-index: 1;
   }
   
   .overlay-content {

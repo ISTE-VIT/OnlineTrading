@@ -5,6 +5,7 @@ const catogorySlide = () => {
     const burger = document.querySelector('.burger');
     const section = document.querySelector('.catogories');
     const display = document.querySelector('.display');
+    const overlay = document.querySelector('.overlay');
 
     burger.addEventListener('click', () => {
         section.classList.toggle('catogories-active');
@@ -12,6 +13,7 @@ const catogorySlide = () => {
         if(intViewportWidth>intViewportHeight){
             display.classList.remove('display-active');
         }
+        overlay.classList.toggle('overlay-active');
     });
 }
 
