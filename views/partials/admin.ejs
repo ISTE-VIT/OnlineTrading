@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>  
+        <link rel="stylesheet" type="text/css" href="../css/style2.css">
+    </head>
+    <body>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Shopping Site</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li> 
+    </ul>
+    <li class="form-inline my-2 my-lg-0"><a class="nav-link" href="/shoppingCart">Shopping Cart
+        <span class="badge">  </span>
+        </a>
+    </li>
+     <li class="dropdown">                       
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user" aria-hidden="true"></i> User <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="profile">User Profile</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="logout">Logout</a></li>
+
+                            <li><a href="signup">SignUp</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="login">SignIn</a></li>
+
+                    </ul>
+                </li>
+  </div>
+</nav>
+          <div class="container">
+            <h1 class="text-center">ADMIN PAGE</h1>
+            <h3 class="text-center head2">Upload your products here</h3>
+              <%- include ("./partials/messages") %>
+		      <div class="row">
+			 <div class="col-lg-8 offset-lg-2">
+        
+                 <form method="POST"  action="/admin">
+                <div class="form-group row">
+                <label for="colFormLabelSm" class="col-lg-3 col-sm-10 col-form-label col-form-label-sm textr">Image Path:</label>
+                <div class="col-lg-6 col-sm-10" id="inpDiv" >
+                  <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="imagePath" name="imagePath" value="<%= typeof imagePath !='undefined' ? imagePath:'' %>">
+                </div>
+              </div> <div class="form-group row">
+                <label for="colFormLabelSm" class="col-lg-3 col-sm-10 col-form-label col-form-label-sm textr">Product ID:</label>
+                <div class="col-lg-6 col-sm-10" id="inpDiv">
+                  <input type="number" class="form-control form-control-sm" id="colFormLabelSm" placeholder="product_id" name="product_id" value="<%= typeof product_id !='undefined' ? product_id:'' %>">
+                </div>
+              </div> <div class="form-group row">
+                <label for="colFormLabelSm" class="col-lg-3 col-sm-10 col-form-label col-form-label-sm textr">Title:</label>
+                <div class="col-lg-6 col-sm-10" id="inpDiv">
+                  <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="title" name="title" value="<%= typeof title !='undefined' ? title:'' %>">
+                </div>
+              </div> <div class="form-group row">
+                <label for="colFormLabelSm" class="col-lg-3 col-sm-10 col-form-label col-form-label-sm textr">Description:</label>
+                <div class="col-lg-6 col-sm-10" id="inpDiv">
+                  <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="description" name="description" value="<%= typeof description !='undefined' ? description:'' %>">
+                </div>
+               
+              </div><div class="form-group row">
+                <label for="colFormLabelSm" class="col-lg-3 col-sm-10 col-form-label col-form-label-sm textr">Manufacturer:</label>
+                <div class="col-lg-6 col-sm-10" id="inpDiv">
+                  <input type="text" class="form-control form-control-sm"  id="colFormLabelSm" placeholder="manufacturer" name="manufacturer" value="<%= typeof manufacturer !='undefined' ? manufacturer:'' %>">
+                </div>
+              </div> <div class="form-group row">
+                <label for="colFormLabelSm" class="col-lg-3 col-sm-10 col-form-label col-form-label-sm textr">Price:</label>
+                <div class="col-lg-6 col-sm-10" id="inpDiv">
+                  <input type="number" class="form-control form-control-sm" id="colFormLabelSm" placeholder="price" name="price" value="<%= typeof price !='undefined' ? price:'' %>">
+                </div>
+              </div> 
+            <div class="col-md-12 form-group text-center">
+            <input type="submit" class=" btn btn-primary logbtn" id="form_submit" value="Submit">
+            </div>
+                 </form>
+                  </div>
+              </div>
+        
+        </div>
+        
+         
+        
+    </body>
+</html>

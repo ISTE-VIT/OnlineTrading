@@ -1,0 +1,50 @@
+.container{
+	margin-top: 30px;
+}
+.head2{
+    padding-bottom: 40px;
+}
+
+#colFormLabelSm{
+    border-radius: 15px;
+}
+
+.form_para{
+    font-weight: 200;
+}
+
+body{
+    font-weight: 500;
+}
+
+#form_submit{
+    border-radius: 20px;
+}
+
+#form_submit{
+    font-weight: 500;
+    font-size: 1.3em;
+    background-color: black;
+    border-color: black;
+}
+
+.textr{
+    text-align: right !important;
+}
+
+@media only screen and (max-width: 786px) {
+    .container{
+        margin-top: 30px;
+    }
+    .form-heading{
+        font-size: 2em;
+        font-weight: 400;
+        padding-top: 5px;
+        padding-bottom: 15px;
+        }
+   .textr{
+    text-align: center!important;
+       font-size: 1.2em;
+       font-weight: 400;
+}
+}
