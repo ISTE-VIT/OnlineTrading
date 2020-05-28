@@ -6,12 +6,12 @@
 }
 
 body{
-    overflow-x: hidden;    
-    background-color: #EAEDED
+    background-color: #EAEDED;
 }
 
 ::-webkit-scrollbar {
-    width: 0.25em;
+    width: 0.5em;
+    transition: 0.3s ease-in-out;
 }
  
 ::-webkit-scrollbar-track {
@@ -21,6 +21,7 @@ body{
 ::-webkit-scrollbar-thumb {
     background-color: #000;
 }
+
 
 .hidden{
     overflow-y: hidden;
@@ -44,15 +45,17 @@ body{
     padding: 1em;
     cursor: pointer;
     z-index: 5;
+    height: 100%;
 }
 
 .burger div{
     width: 2em;
     height: 0.2em;
     margin: 0.3em;
-    background-color: black;
+    background-color: white;
     transition: 1s ease-in-out;
 }
+
 
 .catogories{
     position: fixed;
@@ -73,6 +76,7 @@ body{
 }
 
 .burger-active .line1{
+    background-color: black;
     transform: rotate(-45deg) translate(-0.055em,0.7em);
 }
 
@@ -81,6 +85,7 @@ body{
 }
 
 .burger-active .line3{
+    background-color: black;
     transform: rotate(45deg) translate(-0.055em,-0.7em);
 }
 
@@ -216,42 +221,51 @@ body{
 }
 
 nav{
-    width: 100%;
-    position: fixed;
+    width: 100vw;
+    position: fixed !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5em;
-    background-color: #fff;
+    background-color: transparent;
     z-index: 6;
+    transition: 0.3s ease-in-out;
+    top: 0;
+}
+
+.nav-dark{
+    background-color: #242224;
+    transition: 0.3s ease-in-out;
 }
 
 nav a{
     text-decoration: none;
-    color: black;
+    color: white;
     align-self: center;
+    text-decoration: none;
 }
 
-nav a{
-    text-decoration: none;
-    color: black;
-}
 
 .logo{
+    color: white;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
     font-weight: 100;
     letter-spacing: 0.025em;
+    transition: 0.3s ease-in-out;
 }
 
 .customer-section{
+    color: white;
     display: flex;
     justify-content: space-around;
     list-style: none;
     z-index: 2;
+    transition: 0.3s ease-in-out;
 }
+
 
 .customer-section li{
     padding: 1em;
@@ -324,9 +338,11 @@ nav a{
     }
 
     .burger-active .line1{
+        background-color: black;
         transform: rotate(-45deg) translate(-0.04em,0.6em);
     }
     .burger-active .line3{
+        background-color: black;
         transform: rotate(45deg) translate(-0.06em,-0.6em);
     }
 
@@ -612,11 +628,9 @@ nav a{
         "card5 card5";
     }
 
-    .offer-section .recent{
-        grid-template-areas:  
-        "card1 card2"
-        "card3 card4"
-        "card5 card6";}
+    .offer-section .recent .deal-card{
+        width: 25em;
+    }
 
     .offer-section .catogory-page{
         display: grid;
@@ -675,11 +689,6 @@ nav a{
         "card4 card4 card4"
         "card5 card5 card6";
     }
-
-    .offer-section .recent{
-        grid-template-areas:  
-        "card1 card2 card3"
-        "card4 card5 card6";}
 
     .offer-section .catogory-page{
         padding: 0em 2em;
@@ -764,13 +773,14 @@ nav a{
 
 .category{
     position: absolute;
+    color: white;
     z-index: 5;
     font-size: 1.3em;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     font-weight: 100;
     transform: translateX(3em);
-    border-left: 0.1em solid black;
+    border-left: 0.1em solid white;
     padding-left: 0.25em;
     height: 1.15em;
 }
@@ -805,6 +815,51 @@ footer{
 .links ul a{
     text-decoration: none;
     color: black;
+}
+
+.recent{
+    display: flex;
+    justify-content: space-between;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    transition: 0.3s ease-in-out;
+}
+
+.recent::-webkit-scrollbar{
+    display: none;
+}
+
+.recent .small-promo{
+    min-width: 30em;
+    height: 25em;
+    margin: 0em 1em 0em 0em;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+}
+
+@media screen and (max-width:768px){
+    .recent .small-promo{
+        min-width: 100%;
+    }
+}
+
+.button-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0em;
+}
+
+.button-wrapper button{
+    width: 10em;
+    height: 2.5em;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+body{
+    width: 100vw !important;
 }
 
   .openBtn {
