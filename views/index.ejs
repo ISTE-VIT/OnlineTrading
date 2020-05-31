@@ -2,6 +2,12 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+        <style>
+            body{
+                overflow-x : hidden;
+            }
+        </style>
     </head>
     <body>
         
@@ -15,14 +21,32 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li> <li class="nav-item active">
+        <a class="nav-link" href="/admin">Admin<span class="sr-only">(current)</span></a>
       </li> 
     </ul>
     <li class="form-inline my-2 my-lg-0"><a class="nav-link" href="/shoppingCart">Shopping Cart
         <span class="badge">  </span>
         </a>
     </li>
-      <li class="form-inline my-2 my-lg-0"><a class="nav-link" href="#">User management</a>
-    </li>
+     <li class="dropdown">                       
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user" aria-hidden="true"></i> User <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <% if (loggedIn) { %>
+                            <li>
+                                <a href="profile">User Profile</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="logout">Logout</a></li>
+                        <%} else { %>
+                            <li><a href="signup">SignUp</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="login">SignIn</a></li>
+                        <% } %>
+                    </ul>
+                </li>
   </div>
 </nav>
    <br>
@@ -30,7 +54,15 @@
         <br>
         <br>
         
-        
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div id="success" class="alert alert-success">
+            <%=successMsg%> 
+        </div>
+    </div>
+</div>
+<br>
+<br>
         
         
 <section id="cards">   

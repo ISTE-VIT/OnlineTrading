@@ -9,16 +9,26 @@
   "author": "aditya",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
+    "csurf": "^1.11.0",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
-    "express-session": "^1.17.0",
+    "express-flash-messages": "^0.1.1",
+    "express-handlebars": "^4.0.4",
+    "express-session": "^1.17.1",
+    "hbs": "^4.1.1",
     "mocha": "^7.1.1",
+    "mongodb": "^3.5.7",
     "mongoose": "^5.9.7",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "stripe": "^8.54.0"
   }
 }
