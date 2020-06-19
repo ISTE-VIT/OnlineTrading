@@ -15,6 +15,53 @@ const { ensureAuthenticated } = require('./config/auth');
 
 //order model
 var Order = require('./models/order');
+
+module.exports = function Cart(oldCart) {
+	this.items = oldCart.items || {};
+	this.totalQty = oldCart.totalQty || 0;
+	this.totalPrice = oldCart.totalPrice || 0;
+
+	this.add = function(item, item_id) {
+		var storedItem = this.items[item_id];
+		if(!storedItem)
+		{
+			storedItem = this.items[item_id] = {item: item, qty: 0, price: 0};
+		}
+		storedItem.qty++;
+		storedItem.price = storedItem.item.price * storedItem.qty;
+		this.totalQty++;
+		this.totalPrice += storedItem.item.price;
+	};
+
+	this.reduceByOne = function(item_id) {
+		this.items[item_id].qty--;
+		this.items[item_id].price -= this.items[item_id].item.price;
+		this.totalQty--;
+		this.totalPrice -= this.items[item_id].item.price;
+
+		if(this.items[item_id].qty <= 0)
+		{
+			delete this.items[item_id];
+		}
+	};
+
+	this.remove = function(item_id) {
+		this.totalQty -= this.items[item_id].qty;
+		this.totalPrice -= this.items[item_id].price;
+		delete this.items[item_id];
+	};
+
+	this.generateArray = function() {
+		var products = [];
+		for(var id in this.items)
+		{
+			products.push(this.items[id]);
+		}
+		return products;
+	};
+};
+
+
 //passport config
 require('./config/passport')(passport);
 //User model
@@ -97,6 +144,19 @@ app.get('/',function(req,res){
       res.render('index', {products: productChunks, successMsg: successMsg, noMsg: !successMsg });
     }); 
 });
+
+app.get('/landingpage',function(req,res){
+    var successMsg = req.flash('success')[0];
+      Product.find(function(err,docs){
+        var productChunks = [];
+          var chunkSize = 3;
+          for(var i = 0; i<docs.length; i = i+chunkSize){
+              productChunks.push(docs.slice(i, i+chunkSize));
+          }
+      res.render('landingpage', {products: productChunks, successMsg: successMsg, noMsg: !successMsg });
+    }); 
+});
+
 
 app.get('/admin' ,function(req,res){
       res.render('admin');
@@ -343,5 +403,9 @@ function notLoggedIn(req, res, next)
 	res.redirect('/');
 }
 
-app.listen(6969);
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 6969;
+}
+app.listen(port);
 console.log('listening to magic port 6969');
