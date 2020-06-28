@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>OnlineTrading | ISTE VIT</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/indexstyle.css">
+    </head>
+    <body>
+        <nav style="padding:0 !important;">
+            <div class="burger">
+                <div class="burger-line line1"></div>
+                <div class="burger-line line2"></div>
+                <div class="burger-line line3"></div>
+            </div>
+            <div class="catogories">
+                <div class="customer-section-hidden">
+                    <ul class="catogories-links mobile">
+                        <li class="account">Account</li>
+                        <li class="search">Search</li>
+                    </ul>
+                    <hr class="section-divider">
+                </div>
+                <% const categories = ["Mobiles, Computers",
+                                       "TVs, Applicances, Electronics",
+                                       "Men's Fashion",
+                                       "Women's Fashion",
+                                       "Home, Kitchen, Pets",
+                                       "Beauty, Health, Grocery",
+                                       "Sports, Fitness, Bags, Luggage",
+                                       "Toys, Baby Products, Kid's Fashion",
+                                       "Car, Motorbike, Industrial",
+                                       "Books"
+                                       ];
+                    const links = [ "/MobilesTest",
+                                    "/TVsTest",
+                                    "/MenFashionTest",
+                                    "/WomenFashionTest",
+                                    "/HomeTest",
+                                    "/BeautyTest",
+                                    "/SportsTest",
+                                    "/ToysTest",
+                                    "/CarTest",
+                                    "/BooksTest"
+                                    ];
+                %>
+                <ul class="catogories-links mobile">
+                <%
+                var isMobile = global.orientation > -1; 
+                for(var i=0;i<categories.length;i++){
+                    
+                    if(isMobile){
+                    %>
+                    <a href=<%= categories[i] %>><li><%= categories[i] %></li></a>
+                    <hr class="catogory-gap"/>
+                    <% } else { %>
+                    <li><%= categories[i] %></li>
+                    <% }} %>    
+                </ul>
+            </div>
+<!--            <h1 class="logo">OnlineTrading</h1>-->
+            <ul class="customer-section" style="margin:0 !important;">
+                    <li class="search">Search</li>
+                    <li class="dropdown">                       
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user" aria-hidden="true"></i> User <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" style="background-color:black;">
+                        <% if (loggedIn) { %>
+                            <li>
+                                <a href="profile">User Profile</a>
+                            </li>
+                            <li><a href="logout">Logout</a></li>
+                        <%} else { %>
+                            <li><a href="signup">SignUp</a></li>
+                            <li><a href="login">SignIn</a></li>
+                        <% } %>
+                    </ul>
+                </li>
+                <li class="search"><a href="/admin"> Admin </a></li>
+                <li class="search"><a href="/shoppingCart"> Shopping Cart </a></li>
+            </ul>
+        </nav>     
+        <%
+                for(var i=0;i<categories.length;i++){
+                    var isMobile = window.orientation > -1; 
+                    if(!isMobile){
+                    %>
+                    <div class="display <%= `display${i}` %>">
+                        <h1><%= categories[i] %></h1>
+                        <div class="catogory-card-section">
+                            <div class="catogory-card card1">
+                                <h1>Item 1</h1>
+                            </div>
+                            <div class="catogory-card card2">
+                                <h1>Item 2</h1>
+                            </div>
+                            <div class="catogory-card card3">
+                                <h1>Item 3</h1>
+                            </div>
+                            <div class="catogory-card card4">
+                                <h1>Item 4</h1>
+                            </div>
+                            <div class="catogory-card card5">
+                                <h1>Item 5</h1>
+                            </div>
+                        </div>
+                        <div class="more">
+                            <a href="<%= links[i] %>>"><h2>See more</h2></a>
+                        </div>
+                    </div> 
+                    <% }} %>  
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="promo">
+                <img src="bose-logo.png">
+                <h3>Noise Cancelling</h3>
+                <h4>Bose QuietComfort 35 II</h4>
+            </div>
+            <section class="card-section popular">
+                <div class="cards">
+                    <div class="card">
+                        <h3>Premium TVs</h3>
+                    </div>
+                    <div class="card">
+                        <h3>Premium TVs</h3>
+                    </div>
+                    <div class="card">
+                        <h3>Premium TVs</h3>
+                    </div>
+                </div>
+                <h3>Popular Sections</h3>
+            </section>
+            <hr class="section-gap"/>
+            
+            <section id="cards">   
+                <% products.forEach(function(product){ %>
+                <div class = "row">
+                    <% product.forEach(function(productt){ %>
+                   <div class = "col-sm-6 col-md-4">
+                      <div class = "thumbnail">
+                         <img src="<%= productt.imagePath %>" alt = "Generic placeholder thumbnail" style="width: 90%;">
+                      </div>
+
+                      <div class = "caption">
+                         <h3><%= productt.title %></h3>
+                         <p> <%= productt.description %> </p>
+
+                         <p>
+                            <a href = "/addToCart/<%= productt.id %>" class = "btn btn-primary" role = "button">
+                               Add to cart
+                            </a> 
+
+                           <span> $ <%= productt.price %> </span>
+                         </p>
+                      </div>
+                   </div>
+                   <% }) %>
+                </div>
+                    <% }) %>
+           </section>
+            
+              <section class="offer-section">
+                <div class="headers">
+                    <h1>Today's Deals</h1>
+                </div>
+                <div class="offer-card-section">
+                    <% products.forEach(function(product){ %>
+                    <div class = "row">
+                        <% product.forEach(function(productt){ %>
+                            <div class="deal-card card1 small-promo" style="background-image:url('<%= productt.imagePath %>');">
+                                <h2><%= productt.title %></h2>
+                                <h1><%= productt.description %></h1>
+                            </div>
+                        <% }) %>
+                    </div> 
+                    <% }) %>
+                </div>
+            </section>
+            <hr class="section-gap"/>            
+            <section class="offer-section suggestion-section">
+                <div class="headers">
+                    <h1>Recently viewed items</h1>
+                </div>
+                <div class="wrapper">
+                    <ul class="recent">
+                        <li class="small-promo">
+                            <h2>Item 1</h2>
+                        </li>
+                        <li class="small-promo">
+                            <h2>Item 2</h2>
+                        </li>
+                        <li class="small-promo">
+                            <h2>Item 3</h2>
+                        </li>
+                        <li class="small-promo">
+                            <h2>Item 4</h2>
+                        </li>
+                        <li class="small-promo">
+                            <h2>Item 5</h2>
+                        </li>
+                        <li class="small-promo">
+                            <h2>Item 6</h2>
+                        </li>
+                        </ul>
+                        </div>                   
+                        <div class="button-wrapper">
+                        <button class="slideLeft">Previous</button>
+                        <button class="slideRight">Next</button>
+                        </div>
+                
+            </section>
+        </div>        
+        <hr class="section-gap"/> 
+        <footer>
+            <div class="links">
+                <h1>Links</h1>
+                <ul>
+                    <a href="#"><li class="link">Link 1</li></a>
+                    <a href="#"><li class="link">Link 2</li></a>
+                    <a href="#"><li class="link">Link 3</li></a>
+                    <a href="#"><li class="link">Link 4</li></a>
+                </ul>
+            </div>
+            <div class="links">
+                <h1>Links</h1>
+                <ul>
+                    <a href="#"><li class="link">Link 1</li></a>
+                    <a href="#"><li class="link">Link 2</li></a>
+                    <a href="#"><li class="link">Link 3</li></a>
+                    <a href="#"><li class="link">Link 4</li></a>
+                </ul>
+            </div>
+            <div class="links">
+                <h1>Links</h1>
+                <ul>
+                    <a href="#"><li class="link">Link 1</li></a>
+                    <a href="#"><li class="link">Link 2</li></a>
+                    <a href="#"><li class="link">Link 3</li></a>
+                    <a href="#"><li class="link">Link 4</li></a>
+                </ul>
+            </div>
+        </footer>
+        <script src="javascripts/landing_js.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>

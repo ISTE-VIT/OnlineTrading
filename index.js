@@ -15,53 +15,6 @@ const { ensureAuthenticated } = require('./config/auth');
 
 //order model
 var Order = require('./models/order');
-
-module.exports = function Cart(oldCart) {
-	this.items = oldCart.items || {};
-	this.totalQty = oldCart.totalQty || 0;
-	this.totalPrice = oldCart.totalPrice || 0;
-
-	this.add = function(item, item_id) {
-		var storedItem = this.items[item_id];
-		if(!storedItem)
-		{
-			storedItem = this.items[item_id] = {item: item, qty: 0, price: 0};
-		}
-		storedItem.qty++;
-		storedItem.price = storedItem.item.price * storedItem.qty;
-		this.totalQty++;
-		this.totalPrice += storedItem.item.price;
-	};
-
-	this.reduceByOne = function(item_id) {
-		this.items[item_id].qty--;
-		this.items[item_id].price -= this.items[item_id].item.price;
-		this.totalQty--;
-		this.totalPrice -= this.items[item_id].item.price;
-
-		if(this.items[item_id].qty <= 0)
-		{
-			delete this.items[item_id];
-		}
-	};
-
-	this.remove = function(item_id) {
-		this.totalQty -= this.items[item_id].qty;
-		this.totalPrice -= this.items[item_id].price;
-		delete this.items[item_id];
-	};
-
-	this.generateArray = function() {
-		var products = [];
-		for(var id in this.items)
-		{
-			products.push(this.items[id]);
-		}
-		return products;
-	};
-};
-
-
 //passport config
 require('./config/passport')(passport);
 //User model
@@ -133,7 +86,7 @@ app.use(function(req, res, next) {
 });
 
 //routes
-app.get('/',function(req,res){
+app.get('/index',function(req,res){
     var successMsg = req.flash('success')[0];
       Product.find(function(err,docs){
         var productChunks = [];
@@ -145,7 +98,62 @@ app.get('/',function(req,res){
     }); 
 });
 
-app.get('/landingpage',function(req,res){
+app.get('/automobile',function(req,res){
+      Product.find(function(err,docs){
+        var productChunks = [];
+          var chunkSize = 3;
+          for(var i = 0; i<docs.length; i = i+chunkSize){
+              productChunks.push(docs.slice(i, i+chunkSize));
+          }
+      res.render('AutomobileTest', {products: productChunks});
+    }); 
+});
+
+app.get('/fashion',function(req,res){
+    Product.find(function(err,docs){
+      var productChunks = [];
+        var chunkSize = 3;
+        for(var i = 0; i<docs.length; i = i+chunkSize){
+            productChunks.push(docs.slice(i, i+chunkSize));
+        }
+    res.render('FashionTest', {products: productChunks});
+  }); 
+});
+
+app.get('/home',function(req,res){
+    Product.find(function(err,docs){
+      var productChunks = [];
+        var chunkSize = 3;
+        for(var i = 0; i<docs.length; i = i+chunkSize){
+            productChunks.push(docs.slice(i, i+chunkSize));
+        }
+    res.render('HomeTest', {products: productChunks});
+  }); 
+});
+
+app.get('/sports',function(req,res){
+    Product.find(function(err,docs){
+      var productChunks = [];
+        var chunkSize = 3;
+        for(var i = 0; i<docs.length; i = i+chunkSize){
+            productChunks.push(docs.slice(i, i+chunkSize));
+        }
+    res.render('SportsTest', {products: productChunks});
+  }); 
+});
+
+app.get('/beauty',function(req,res){
+    Product.find(function(err,docs){
+      var productChunks = [];
+        var chunkSize = 3;
+        for(var i = 0; i<docs.length; i = i+chunkSize){
+            productChunks.push(docs.slice(i, i+chunkSize));
+        }
+    res.render('BeautyTest', {products: productChunks});
+  }); 
+});
+
+app.get('/',function(req,res){
     var successMsg = req.flash('success')[0];
       Product.find(function(err,docs){
         var productChunks = [];
@@ -153,7 +161,7 @@ app.get('/landingpage',function(req,res){
           for(var i = 0; i<docs.length; i = i+chunkSize){
               productChunks.push(docs.slice(i, i+chunkSize));
           }
-      res.render('landingpage', {products: productChunks, successMsg: successMsg, noMsg: !successMsg });
+      res.render('landingpage2', {products: productChunks, successMsg: successMsg, noMsg: !successMsg });
     }); 
 });
 
@@ -168,7 +176,8 @@ app.post('/admin', urlencodedParser, (req,res) =>{
          title,
          description,
          manufacturer,
-         price } = req.body;
+         price,
+        category } = req.body;
         
         const newProduct = new Product({
                             imagePath,
@@ -176,7 +185,8 @@ app.post('/admin', urlencodedParser, (req,res) =>{
                              title,
                              description,
                              manufacturer,
-                             price
+                             price,
+                             category
                         });
                 console.log(newProduct);
                 //save user
@@ -207,7 +217,7 @@ app.get('/addTocart/:id', function(req,res){
 });
 
 app.get('/reduce/:id',function(req,res,next){
-               var productId = req.params.id;
+      var productId = req.params.id;
       var cart = new Cart(req.session.cart ? req.session.cart : {} );
         
         cart.reduceByOne(productId);
@@ -222,13 +232,13 @@ app.get('/remove/:id',function(req,res,next){
        
         cart.removeItem(productId);
         req.session.cart = cart;
-        res.render('addtocart');
+        res.redirect('addtocart');
 });
 
 
 app.get('/shoppingCart/', function(req,res,next){
    if(!req.session.cart){
-       return res.render('addtocart',{product:null});
+       return res.render('emptyCart');
    } 
     var cart = new Cart(req.session.cart);
     res.render('addtocart', {products: cart.generateArray(),totalPrice: cart.totalPrice});
