@@ -84,7 +84,18 @@
                 <div class="col-lg-6 col-sm-10" id="inpDiv">
                   <input type="number" class="form-control form-control-sm" id="colFormLabelSm" placeholder="price" name="price" value="<%= typeof price !='undefined' ? price:'' %>">
                 </div>
-              </div> 
+              </div> <div class="form-group row">
+                <label for="colFormLabelSm" class="col-lg-3 col-sm-10 col-form-label col-form-label-sm textr">Category:</label>
+                <div class="col-lg-6 col-sm-10" id="inpDiv">
+                  <select type="text" class="form-control form-control-sm" id="colFormLabelSm" name="category" placeholder="category">
+                    <option value="Fashion">Fashion</option>
+                    <option value="Home">Home</option>
+                    <option value="Beauty">Beauty</option>
+                    <option value="sports">sports</option>
+                    <option value="automobile">automobile</option>
+                  </select>
+                </div>
+              </div>  
             <div class="col-md-12 form-group text-center">
             <input type="submit" class=" btn btn-primary logbtn" id="form_submit" value="Submit">
             </div>
@@ -94,7 +105,10 @@
         
         </div>
         
-         
+        <script src="javascripts/landing_js.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
         
     </body>
 </html>
