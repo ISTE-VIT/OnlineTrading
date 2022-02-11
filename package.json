@@ -20,7 +20,7 @@
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-flash-messages": "^0.1.1",
-    "express-handlebars": "^4.0.4",
+    "express-handlebars": "^5.3.1",
     "express-session": "^1.17.1",
     "hbs": "^4.1.1",
     "mocha": "^7.1.1",
