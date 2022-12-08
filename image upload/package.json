@@ -10,9 +10,9 @@
   "author": "Anushka Dixit",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.20.1",
     "ejs": "^3.1.2",
-    "express": "^4.16.2",
+    "express": "^4.18.2",
     "gridfs-stream": "^1.1.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.0.9",
